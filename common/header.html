@@ -35,9 +35,9 @@
             return postCache[id];
         }, 
         html(attrs) {
-            const setup = setups[category.slug];
+            const category = setups[attrs.slug];
             const nodes = [
-                this.getPost(setup["post-id"])
+                this.getPost(category["post-id"])
             ];
             return h("category-tools", nodes);
         }
