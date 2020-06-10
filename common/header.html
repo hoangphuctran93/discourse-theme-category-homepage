@@ -1,4 +1,21 @@
 <script type="text/discourse-plugin" version="0.8">
+
+
+    function defaultSettings() {
+        return {};
+    }
+
+    function parseSetups(raw) {
+        const parsed = {};
+        raw.split("|").forEach(setting => {
+            const [category, value] = setting.split(",").map(s => s.trim());
+            parsed[category] = parsed[category] || defaultSettings();
+            parsed[category]["post-id"] = value;
+        });
+        return parsed;
+    }
+
+    const setups = parseSetups(settings.setup);
     const container = Discourse.__container__;
     const { h } = require("virtual-dom");
     const { ajax } = require("discourse/lib/ajax");
@@ -18,52 +35,11 @@
             return postCache[id];
         }, 
         html(attrs) {
-            if (attrs.slug == "vie-du-mouvement") {
-                const nodes = [
-                    this.getPost(175)
-                ];
-                return h("category-tools", nodes);
-            } else if (attrs.slug == "la-transition") {
-                const nodes = [
-                    this.getPost(2492)
-                ];
-                return h("category-tools", nodes);
-            } else if (attrs.slug == "alimentation") {
-                const nodes = [
-                    this.getPost(2477)
-                ];
-                return h("category-tools", nodes);
-            } else if (attrs.slug == "mobilite") {
-                const nodes = [
-                    this.getPost(2478)
-                ];
-                return h("category-tools", nodes);
-            } else if (attrs.slug == "vie-pratique") {
-                const nodes = [
-                    this.getPost(2481)
-                ];
-                return h("category-tools", nodes);
-            } else if (attrs.slug == "faire-societe") {
-                const nodes = [
-                    this.getPost(2482)
-                ];
-                return h("category-tools", nodes);
-            } else if (attrs.slug == "energie") {
-                const nodes = [
-                    this.getPost(2479)
-                ];
-                return h("category-tools", nodes);
-            } else if (attrs.slug == "habitat") {
-                const nodes = [
-                    this.getPost(424)
-                ];
-                return h("category-tools", nodes);
-            } else if (attrs.slug == "pour-les-nouveaux") {
-                const nodes = [
-                    this.getPost(2480)
-                ];
-                return h("category-tools", nodes);
-            }
+            const setup = setups[category.slug];
+            const nodes = [
+                this.getPost(setup["post-id"])
+            ];
+            return h("category-tools", nodes);
         }
     });
 </script>

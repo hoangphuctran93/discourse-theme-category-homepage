@@ -26,7 +26,7 @@ setup:
     </ul>
     <p>For performance reasons it's recommended that you close  sidebar topics so there aren't any replies</p>
 
-setup:
+tag_list:
   type: list
   default: 'staff, important, urgent'
   description: |
