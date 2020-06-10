@@ -10,7 +10,7 @@ show_subcategory:
   default: true
   description: 'Show the subcategories'
 
-show_category_unreadnew: 
+show_subcategory_unreadnew: 
   default: true
   description: 'Show the unread/new indicators for subcategories'
 
@@ -22,7 +22,6 @@ setup:
     <ul>
     <li>The category slug is the category name from its url, for example /c/<b>site-feedback</b></li>
     <li>The topic ID is the first number in its url, for example /t/welcome-to-discourse/<b>8</b>/3</li>
-    <li>If you'd like to set a sidebar for /latest, /top, /new, /unread, use <code>all</code> as the category slug</li>
     </ul>
     <p>For performance reasons it's recommended that you close  sidebar topics so there aren't any replies</p>
 
