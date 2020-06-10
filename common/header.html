@@ -85,46 +85,50 @@
             {{mount-widget widget="category-tags" args=c}}
           </div>
           {{#if c.isGrandParent}}
-            {{#each c.subcategories as |subcategory|}}
-              <div data-category-id={{subcategory.id}} data-notification-level={{subcategory.notificationLevelString}} style={{border-color subcategory.color}} class="subcategory with-subcategories {{if subcategory.uploaded_logo.url "has-logo" "no-logo"}}">
-                <div class="subcategory-box-inner">
-                  {{category-title-link tagName="h4" category=subcategory}}
-                  {{#if (theme-setting 'show_subcategory')}}
-                      {{#if subcategory.subcategories}}
-                        <div class="subcategories">
-                          {{#each subcategory.subcategories as |subsubcategory|}}
-                            {{#unless subsubcategory.isMuted}}
-                              <span class="subcategory">
-                                {{category-title-before category=subsubcategory}}
-                                {{category-link subsubcategory hideParent="true"}}
-                                {{#if (theme-setting 'show_subcategory_unreadnew')}}
-                                  {{category-unread category=subsubcategory}}
-                                {{/if}}
-                              </span>
-                            {{/unless}}
-                          {{/each}}
-                        </div>
-                      {{/if}}
-                  {{/if}}
+            {{#if (theme-setting 'show_subcategory')}}
+              {{#each c.subcategories as |subcategory|}}
+                <div data-category-id={{subcategory.id}} data-notification-level={{subcategory.notificationLevelString}} style={{border-color subcategory.color}} class="subcategory with-subcategories {{if subcategory.uploaded_logo.url "has-logo" "no-logo"}}">
+                  <div class="subcategory-box-inner">
+                    {{category-title-link tagName="h4" category=subcategory}}
+                    {{#if subcategory.subcategories}}
+                      <div class="subcategories">
+                        {{#each subcategory.subcategories as |subsubcategory|}}
+                          {{#unless subsubcategory.isMuted}}
+                            <span class="subcategory">
+                              {{category-title-before category=subsubcategory}}
+                              {{category-link subsubcategory hideParent="true"}}
+                              {{#if (theme-setting 'show_subcategory_unreadnew')}}
+                                {{category-unread category=subsubcategory}}
+                              {{/if}}
+                            </span>
+                          {{/unless}}
+                        {{/each}}
+                      </div>
+                    {{/if}}
+                  </div>
                 </div>
-              </div>
-            {{/each}}
-          {{else if c.subcategories}}
-            <div class="subcategories">
-              {{#each c.subcategories as |sc|}}
-                <a class="subcategory" href={{sc.url}}>
-                  <span class="subcategory-image-placeholder">
-                    {{cdn-img
-                        src=sc.uploaded_logo.url
-                        class="logo"
-                        width=sc.uploaded_logo.width
-                        height=sc.uploaded_logo.height}}
-                  </span>
-                  {{category-link sc hideParent="true"}}
-                  {{category-unread category=sc class="unread-new"}}
-                </a>
               {{/each}}
-            </div>
+            {{/if}}
+          {{else if c.subcategories}}
+            {{#if (theme-setting 'show_subcategory')}}
+              <div class="subcategories">
+                {{#each c.subcategories as |sc|}}
+                  <a class="subcategory" href={{sc.url}}>
+                    <span class="subcategory-image-placeholder">
+                      {{cdn-img
+                          src=sc.uploaded_logo.url
+                          class="logo"
+                          width=sc.uploaded_logo.width
+                          height=sc.uploaded_logo.height}}
+                    </span>
+                    {{category-link sc hideParent="true"}}
+                    {{#if (theme-setting 'show_subcategory_unreadnew')}}
+                      {{category-unread category=sc class="unread-new"}}
+                    {{/if}}
+                  </a>
+                {{/each}}
+              </div>
+            {{/if}}
           {{/if}}
           <div class="category-stats" title={{c.statTitle}}>{{html-safe c.stat}}</div>
         {{/unless}}
