@@ -1,0 +1,37 @@
+show_description: 
+  default: false
+  description: 'Show description excerpt from "About This Category" post'
+
+show_category_unreadnew: 
+  default: true
+  description: 'Show the unread/new indicators for categories'
+
+show_subcategory: 
+  default: true
+  description: 'Show the subcategories'
+
+show_category_unreadnew: 
+  default: true
+  description: 'Show the unread/new indicators for subcategories'
+
+setup:
+  type: list
+  default: 'staff, 3'
+  description: |
+    Each line should be in the format of "<code>category-slug</code>, <code>ID</code>".<br/><br/>
+    <ul>
+    <li>The category slug is the category name from its url, for example /c/<b>site-feedback</b></li>
+    <li>The topic ID is the first number in its url, for example /t/welcome-to-discourse/<b>8</b>/3</li>
+    <li>If you'd like to set a sidebar for /latest, /top, /new, /unread, use <code>all</code> as the category slug</li>
+    </ul>
+    <p>For performance reasons it's recommended that you close  sidebar topics so there aren't any replies</p>
+
+setup:
+  type: list
+  default: 'staff, important, urgent'
+  description: |
+    Each line should be in the format of "<code>category-slug</code>, <code>tag</code>, <code>tag</code>...".<br/><br/>
+    <ul>
+    <li>The category slug is the category name from its url, for example /c/<b>site-feedback</b></li>
+    <li>The tags are separated by a comma, with no comma at the end
+

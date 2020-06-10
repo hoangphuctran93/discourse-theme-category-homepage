@@ -1,0 +1,32 @@
+@import "common/foundation/variables";
+ 
+ 
+.category-boxes .category-box, .category-boxes-with-topics .category-box {
+    border-style:outset;
+    border-width: 6px;
+    width: 23%;
+}
+.category-boxes .category-box-inner, .category-boxes-with-topics .category-box-inner{
+    border-width: 0px;
+}
+
+section.category-heading{
+    display:none;
+}
+
+.category-boxes .description{
+    pointer-events: fill;
+}
+
+.category-boxes .category-stats{
+  position: absolute;
+  bottom: 0;
+  right: .5ex;
+  color: #909090;
+  font-size: small;
+}
+
+.category-boxes .unread-new{
+    font-size: small;
+}
+

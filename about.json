@@ -1,0 +1,10 @@
+{
+  "name": "discourse-theme-category-homepage",
+  "license_url": "https://framagit.org/oca/discourse-theme-category-homepage/blob/master/LICENSE",
+  "about_url": "https://framagit.org/oca/discourse-theme-category-homepage/blob/master/README.md",
+  "component": true,
+  "assets": {
+  },
+  "color_schemes": {
+  }
+}
