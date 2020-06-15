@@ -1,6 +1,5 @@
 <script type="text/discourse-plugin" version="0.8">
 
-
     function defaultSettings() {
         return {};
     }
@@ -14,6 +13,17 @@
         });
         return parsed;
     }
+    
+    function parseTags(raw) {
+        const parsed = {};
+        raw.split("|").forEach(setting => {
+            var words = setting.split(",").map(s => s.trim());
+            const category = words.shift()
+            parsed[category] = parsed[category] || defaultSettings();
+            parsed[category]["tags"] = words;
+        });
+        return parsed;
+    }
 
     const setups = parseSetups(settings.setup);
     const container = Discourse.__container__;
@@ -22,9 +32,8 @@
     const PostCooked = require("discourse/widgets/post-cooked").default;
     const postCache = {};
     
-    api.createWidget("category-tags", {
-        tagName: "div.category-tags",
-            
+    api.createWidget("category-fulldescription", {
+        tagName: "div.category-fulldescription",
         getPost(id) {
             if (!postCache[id]) {
                 ajax(`/t/${id}.json`).then(response => {
@@ -35,14 +44,25 @@
             return postCache[id];
         }, 
         html(attrs) {
-            const category = setups[attrs.slug];
-            const nodes = [
-                this.getPost(category["post-id"])
-            ];
-            return h("category-tools", nodes);
+            if (setups.hasOwnProperty(attrs.slug)) {
+                const category = setups[attrs.slug];
+                const nodes = [
+                    this.getPost(category["post-id"])
+                ];
+                return h("category-fulldescription", nodes);
+            }
+            
         }
     });
+    
+    api.modifyClass("component:categories-boxes", {
+        category_tag_list: Ember.computed(function() {
+            const result = parseTags(settings.tag_list);
+            return result;
+      })
+    })
 </script>
+
 
 
 <script type="text/x-handlebars" data-template-name="components/categories-boxes">
@@ -82,7 +102,14 @@
             {{#if (theme-setting 'show_description')}}
               {{text-overflow class="overflow" text=c.description_excerpt}}
             {{/if}}
-            {{mount-widget widget="category-tags" args=c}}
+            {{mount-widget widget="category-fulldescription" args=c}}
+            {{#with (get category_tag_list c.slug) as |setting_tags_list|}}
+                {{#each setting_tags_list.tags as |tag|}}
+                    <div class="tag-box">
+                    {{discourse-tag tag}}
+                    </div>
+                {{/each}}
+            {{/with}}
           </div>
           {{#if c.isGrandParent}}
             {{#if (theme-setting 'show_subcategory')}}
@@ -137,5 +164,6 @@
   </div>
 {{/each}}
 </script>
+
 
 
