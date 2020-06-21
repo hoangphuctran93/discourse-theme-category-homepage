@@ -32,8 +32,8 @@
     const PostCooked = require("discourse/widgets/post-cooked").default;
     const postCache = {};
     
-    api.createWidget("category-fulldescription", {
-        tagName: "div.category-fulldescription",
+    api.createWidget("category-tooltip", {
+        tagName: "div.category-tooltip",
         getPost(id) {
             if (!postCache[id]) {
                 ajax(`/t/${id}.json`).then(response => {
@@ -44,14 +44,15 @@
             return postCache[id];
         }, 
         html(attrs) {
+            console.log(attrs);
             if (setups.hasOwnProperty(attrs.slug)) {
                 const category = setups[attrs.slug];
                 const nodes = [
                     this.getPost(category["post-id"])
                 ];
-                return h("category-fulldescription", nodes);
+                console.log(attrs);
+                return h("category-tooltip", nodes);
             }
-            
         }
     });
     
@@ -59,58 +60,101 @@
         category_tag_list: Ember.computed(function() {
             const result = parseTags(settings.tag_list);
             return result;
-      })
+        }),
+        
+        actions: {
+            changeCategoryNotificationLevel(arg1, arg2, arg3, arg4) {
+                console.log(this);
+                console.log(arg1);
+                console.log(arg2);
+                console.log(arg3);
+                console.log(arg4);
+                category.setNotification(notificationLevel);
+            }
+        }
     })
+    api.createWidget("category-notification-status-button", {
+        tagName: "div.category-notification-status-button",
+        html(attrs) {
+            console.log(attrs);
+            if (setups.hasOwnProperty(attrs.slug)) {
+                const category = setups[attrs.slug];
+                const nodes = [
+                    this.getPost(category["post-id"])
+                ];
+                console.log(attrs);
+                return h("category-tooltip", nodes);
+            }
+        }
+    });
 </script>
 
 
 
 <script type="text/x-handlebars" data-template-name="components/categories-boxes">
 {{#each categories as |c|}}
-  <div style={{unless noCategoryStyle (border-color c.color)}} data-category-id={{c.id}} data-notification-level={{c.notificationLevelString}} data-url={{c.url}} class="category category-box category-box-{{c.slug}} {{if c.isMuted "muted"}} {{if noCategoryStyle "no-category-boxes-style"}}">
-    <div class="category-box-inner">
+  <div style={{border-color c.color}} data-category-id={{c.id}} data-notification-level={{c.notificationLevelString}} data-url={{c.url}} class="category category-box category-box-{{c.slug}} {{if c.isMuted "muted"}} {{if noCategoryStyle "no-category-boxes-style"}}">
+    <div class="category-box-inner" style='background-color:#{{c.color}}10'>
       {{#unless c.isMuted}}
-        <div class="category-logo">
-          {{#if c.uploaded_logo.url}}
+      <div class="category-logo" href={{c.url}}>
+        {{category-notifications-button
+            value=c.notification_level
+            category=c
+            onChange=(action "changeCategoryNotificationLevel")
+        }}
+        {{#if (theme-setting 'show_category_unreadnew')}}
+            {{category-unread category=c tagName="div" class="unread-new"}}
+        {{/if}}
+        {{#if c.uploaded_logo.url}}
+          <a href={{c.url}}>
             {{cdn-img
-              src=c.uploaded_logo.url
-              class="logo"
-              width=c.uploaded_logo.width
-              height=c.uploaded_logo.height
+                src=c.uploaded_logo.url
+                class="logo"
+                width=c.uploaded_logo.width
+                height=c.uploaded_logo.height
             }}
-          {{/if}}
-        </div>
+          </a>
+        {{/if}}
+      </div>
       {{/unless}}
+      
       <div class="category-details">
         <div class="category-box-heading">
-          <a class="parent-box-link" href={{c.url}}>
+          <a href={{c.url}}>
             <h3>
               {{#if c.read_restricted}}
                 {{d-icon "lock"}}
               {{/if}}
               {{c.name}}
-              {{#if (theme-setting 'show_category_unreadnew')}}
-                <br>
-                {{category-unread category=c tagName="div" class="unread-new"}}
-              {{/if}}
             </h3>
           </a>
+            <div class="description">
+              {{#if (theme-setting 'show_description')}}
+                {{text-overflow class="overflow" text=c.description_excerpt}}
+              {{else}}
+                {{mount-widget widget="category-tooltip" args=c}}
+              {{/if}}
+            </div>
         </div>
+        
+         <h4 style='margin-bottom:1ex;'>
+            <a href={{c.url}}>Voir tous les sujets</a>
+        </h4>
+        
+        <div class="description no-padding-bottom">
+        {{#with (get category_tag_list c.slug) as |setting_tags_list|}}
+          <div class="tag-list direct-access-links">
+            <div class=separator>Thèmes fréquents</div>
+            {{#each setting_tags_list.tags as |tag|}}
+              <span class="tag-box badge-wrapper">
+                {{discourse-tag tag}}
+              </span>
+            {{/each}}
+          </div>
+        {{/with}}
 
         {{#unless c.isMuted}}
-          <div class="description">
-            {{#if (theme-setting 'show_description')}}
-              {{text-overflow class="overflow" text=c.description_excerpt}}
-            {{/if}}
-            {{mount-widget widget="category-fulldescription" args=c}}
-            {{#with (get category_tag_list c.slug) as |setting_tags_list|}}
-                {{#each setting_tags_list.tags as |tag|}}
-                    <div class="tag-box">
-                    {{discourse-tag tag}}
-                    </div>
-                {{/each}}
-            {{/with}}
-          </div>
+        
           {{#if c.isGrandParent}}
             {{#if (theme-setting 'show_subcategory')}}
               {{#each c.subcategories as |subcategory|}}
@@ -138,32 +182,58 @@
             {{/if}}
           {{else if c.subcategories}}
             {{#if (theme-setting 'show_subcategory')}}
-              <div class="subcategories">
-                {{#each c.subcategories as |sc|}}
-                  <a class="subcategory" href={{sc.url}}>
-                    <span class="subcategory-image-placeholder">
-                      {{cdn-img
-                          src=sc.uploaded_logo.url
-                          class="logo"
-                          width=sc.uploaded_logo.width
-                          height=sc.uploaded_logo.height}}
-                    </span>
-                    {{category-link sc hideParent="true"}}
-                    {{#if (theme-setting 'show_subcategory_unreadnew')}}
-                      {{category-unread category=sc class="unread-new"}}
+              <div class="direct-access-links">
+                <div class="separator">Annonces</div><
+                <div class="subcategories">
+                  {{#each c.subcategories as |sc|}}
+                    {{#unless sc.read_restricted}}
+                      <a class="subcategory" href={{sc.url}}>
+                        <span class="subcategory-image-placeholder">
+                          {{cdn-img
+                              src=sc.uploaded_logo.url
+                              class="logo"
+                              width=sc.uploaded_logo.width
+                              height=sc.uploaded_logo.height}}
+                        </span>
+                        {{category-link sc hideParent="true"}}
+                        {{#if (theme-setting 'show_subcategory_unreadnew')}}
+                          {{category-unread category=sc class="unread-new"}}
+                        {{/if}}
+                      </a>
+                    {{/unless}}
+                  {{/each}}
+                </div>
+              </div>
+              <div class="direct-access-links">
+                <div class="separator">Groupes auxquels j'ai accès<sup class="tooltip" title="N'hésitez pas à rejoindre un groupe via la page des groupes.">?</sup></div>
+                <div class="subcategories">
+                  {{#each c.subcategories as |sc|}}
+                    {{#if sc.read_restricted}}
+                      <a class="subcategory" href={{sc.url}}>
+                        <span class="subcategory-image-placeholder">
+                          {{cdn-img
+                              src=sc.uploaded_logo.url
+                              class="logo"
+                              width=sc.uploaded_logo.width
+                              height=sc.uploaded_logo.height}}
+                        </span>
+                        {{category-link sc hideParent="true"}}
+                        {{#if (theme-setting 'show_subcategory_unreadnew')}}
+                          {{category-unread category=sc class="unread-new"}}
+                        {{/if}}
+                      </a>
                     {{/if}}
-                  </a>
-                {{/each}}
+                  {{/each}}
+                </div>
               </div>
             {{/if}}
           {{/if}}
-          <div class="category-stats" title={{c.statTitle}}>{{html-safe c.stat}}</div>
         {{/unless}}
+        
+          </div>
+          <div class="category-stats" title={{c.statTitle}}>{{html-safe c.stat}}</div>
       </div>
     </div>
   </div>
 {{/each}}
 </script>
-
-
-
