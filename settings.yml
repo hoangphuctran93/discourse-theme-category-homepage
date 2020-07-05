@@ -54,7 +54,7 @@ show_subcategory_unreadnew:
   description: 'Show the unread/new indicators for subcategories'
 
 separate_private_subcategories: 
-  default: "true"
+  default: true
   description: 'Display public and private subcategories separately.'
 
 text_private_subcategories: 
