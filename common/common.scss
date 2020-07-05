@@ -28,12 +28,10 @@
     .category-logo{
         .category-notifications-button{
             float:right;
-            pointer-events: none;
-            z-index:1;
+            //pointer-events: none;
             top:2ex;
-            .select-kit-body{
-                position:relative;
-                z-index:10;
+            button{
+                background:$secondary;
             }
         }
         .logo{
@@ -50,7 +48,6 @@
             float:left;
             margin-right: 0;
             //pointer-events: fill;
-            z-index:1;
             max-width:5em;
         }
     }
@@ -129,11 +126,15 @@ section.category-heading{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.4em;
     a{
-        color:$primary;
+        color:$primary-high;
         font-weight: bold;
     }
+}
+.discourse-tags .discourse-tag.simple:not(:last-child)::after,{
+    content: "";
+    margin:0;
 }
 
 
@@ -164,4 +165,51 @@ section.category-heading{
 }
 
 
+a.discourse-tag {
+    height: 1.3em;
+    line-height: 1.3em;
+    position: relative;
+    padding: 0 4px 0 1em;
+    bottom:0;
+    margin-right: .5em!important;
+    background: $primary-low;
+    text-decoration: none;
+    //border-color:$primary-medium;
+    //border-width:1px;
+    //border-style:solid;
+    -moz-border-radius-bottomright: .25em;
+    -webkit-border-bottom-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+    -moz-border-radius-topright: .25em;
+    -webkit-border-top-right-radius: .25em;
+    border-top-right-radius: .25em;
+    -moz-border-radius-bottomleft: 1em;
+    -webkit-border-bottom-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    -moz-border-radius-topleft: 1em;
+    -webkit-border-top-left-radius: 1em;
+    border-top-left-radius: 1em;
+    -webkit-mask-image: radial-gradient(.2em at .5em 50% , transparent 100%, black 100%);
+    //clip-path: circle(.3em at .5em 50%);
+}
+//a.discourse-tag:after{
+//    content: "";
+//    position: absolute;
+//    top: calc(50%);
+//    left: .25em;
+//    float: left;
+//    width: .3em;
+//    height: .3em;
+//    -moz-border-radius: .5em;
+//    -webkit-border-radius: .5em;
+//    border-radius: .5em;
+//    border-color:$primary-low;
+//    border-width:1px;
+//    border-style:solid;
+//    background: $secondary;
+//
+//}
 
+
+
+//inner-category-box : style='background-color:#{{c.color}}10'
