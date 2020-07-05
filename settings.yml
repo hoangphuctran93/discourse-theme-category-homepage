@@ -6,24 +6,28 @@ show_category_unreadnew:
   default: true
   description: 'Show the unread/new indicators for categories'
 
-show_subcategory: 
+show_quantity: 
   default: true
-  description: 'Show the subcategories'
+  description: 'Show the quantity of posts in categories'
 
-show_subcategory_unreadnew: 
+show_bell: 
   default: true
-  description: 'Show the unread/new indicators for subcategories'
+  description: 'Show the notification level button for categories'
 
-setup:
-  type: list
-  default: 'staff, 3'
-  description: |
-    Each line should be in the format of "<code>category-slug</code>, <code>ID</code>".<br/><br/>
-    <ul>
-    <li>The category slug is the category name from its url, for example /c/<b>site-feedback</b></li>
-    <li>The topic ID is the first number in its url, for example /t/welcome-to-discourse/<b>8</b>/3</li>
-    </ul>
-    <p>For performance reasons it's recommended that you close  sidebar topics so there aren't any replies</p>
+text_all_posts: 
+  type: text
+  default: "See all posts in this category"
+  description: 'If empty, remove the link.'
+
+icon_all_posts: 
+  type: text
+  default: ""
+  description: 'Icon preceding the previous text. May be left empty.'
+
+text_tags: 
+  type: text
+  default: "Main tags"
+  description: 'If empty, remove the link.'
 
 tag_list:
   type: list
@@ -33,4 +37,28 @@ tag_list:
     <ul>
     <li>The category slug is the category name from its url, for example /c/<b>site-feedback</b></li>
     <li>The tags are separated by a comma, with no comma at the end
+
+show_subcategory: 
+  default: true
+  description: 'Show the subcategories'
+
+text_subcategories: 
+  type: text
+  default: "Subcategories"
+  description: |
+    If empty, remove the separator.<br/>
+    If separate_private_subcategories is true, then apply text for public subcategories.
+
+show_subcategory_unreadnew: 
+  default: true
+  description: 'Show the unread/new indicators for subcategories'
+
+separate_private_subcategories: 
+  default: "true"
+  description: 'Display public and private subcategories separately.'
+
+text_private_subcategories: 
+  type: text
+  default: "Private subcategories"
+  description: 'If empty, remove the separator.'
 
