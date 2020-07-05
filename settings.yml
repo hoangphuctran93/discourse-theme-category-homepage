@@ -15,17 +15,17 @@ show_bell:
   description: 'Show the notification level button for categories'
 
 text_all_posts: 
-  type: text
+  type: string
   default: "See all posts in this category"
   description: 'If empty, remove the link.'
 
 icon_all_posts: 
-  type: text
+  type: string
   default: ""
   description: 'Icon preceding the previous text. May be left empty.'
 
 text_tags: 
-  type: text
+  type: string
   default: "Main tags"
   description: 'If empty, remove the link.'
 
@@ -43,7 +43,7 @@ show_subcategory:
   description: 'Show the subcategories'
 
 text_subcategories: 
-  type: text
+  type: string
   default: "Subcategories"
   description: |
     If empty, remove the separator.<br/>
@@ -51,14 +51,13 @@ text_subcategories:
 
 show_subcategory_unreadnew: 
   default: true
-  description: 'Show the unread/new indicators for subcategories'
+  description: 'Show the unread/new indicators for subcategories.'
 
 separate_private_subcategories: 
   default: true
   description: 'Display public and private subcategories separately.'
 
 text_private_subcategories: 
-  type: text
+  type: string
   default: "Private subcategories"
   description: 'If empty, remove the separator.'
-
