@@ -1,5 +1,14 @@
+target_box_size:
+  type: string
+  default: "250px"
+  description: |
+    The target size for the flexible category box.<br/>
+    You should enter a <a href="https://www.w3schools.com/CSSref/css_units.asp"> valid css length</a>.<br/>
+    On a full size (1100px) screen, <code>200px</code> will give you mostly 4 boxes per line, and <code>300px</code> will give you mostly 3 boxes per line.
+    
+
 show_description: 
-  default: false
+  default: true
   description: 'Show description excerpt from "About This Category" post'
 
 show_category_unreadnew: 
@@ -27,13 +36,13 @@ icon_all_posts:
 text_tags: 
   type: string
   default: "Main tags"
-  description: 'If empty, remove the link.'
+  description: 'If empty, remove the separator.'
 
 tag_list:
   type: list
   default: 'staff, important, urgent'
   description: |
-    Each line should be in the format of "<code>category-slug</code>, <code>tag</code>, <code>tag</code>...".<br/><br/>
+    Each line should be in the format of "<code>category-slug</code>, <code>tag</code>, <code>tag</code>...".<br/>
     <ul>
     <li>The category slug is the category name from its url, for example /c/<b>site-feedback</b></li>
     <li>The tags are separated by a comma, with no comma at the end
@@ -47,7 +56,7 @@ text_subcategories:
   default: "Subcategories"
   description: |
     If empty, remove the separator.<br/>
-    If separate_private_subcategories is true, then apply text for public subcategories.
+    If <code>separate_private_subcategories</code> is true, then apply text for public subcategories.
 
 show_subcategory_unreadnew: 
   default: true

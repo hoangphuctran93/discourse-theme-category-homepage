@@ -7,7 +7,7 @@
         border-width: 6px;
         flex-grow: 1;
         flex-shrink: 1;
-        flex-basis: 23%;
+        flex-basis: $target_box_size;
         
         align-content: space-between;
         justify-content: space-between;
@@ -19,19 +19,21 @@
         }
     }
     .category-stats{
+        pointer-events: none;
         position: absolute;
         top: .5ex;
         right: 1ex;
-        color: #909090;
+        color: $primary-medium;
         font-size: small;
     }
     .category-logo{
         .category-notifications-button{
             float:right;
-            //pointer-events: none;
-            top:2ex;
+            top:2.5ex;
             button{
+                min-height: 0;
                 background:$secondary;
+                padding: 2px;
             }
         }
         .logo{
@@ -41,13 +43,10 @@
             left: 0;
             right: 0;
             margin: 0 auto;
-            //left:50%;
-            //margin: auto;
         }
         .unread-new{
             float:left;
             margin-right: 0;
-            //pointer-events: fill;
             max-width:5em;
         }
     }
@@ -64,30 +63,34 @@
         pointer-events: fill;
         position:relative;
         text-align: left;
+        
         //background-color: $primary-very_low;
-        //border-radius: 1ex;
     }
+    
     .no-padding-bottom{
         padding-bottom: 0;
     }
+    
+    
+    .tag-list .tag-box{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0.2em;
+        a{
+            color:$primary-high;
+            font-weight: bold;
+        }
+    }
+    
     .subcategories{
         a.badge-wrapper{
             color:$primary;
             font-weight: bold;
         }
-        :last-child{
-            //padding-bottom: 0;
-            //margin-bottom: 0;
-        }
-        margin-bottom: .9ex;
-    }
-    h4{
     }
     
-    .discourse-tag.simple{
-        margin-right: 5px;
-    }
     .separator {
+        pointer-events: none;
         display: flex;
         align-items: center;
         text-align: center;
@@ -105,33 +108,7 @@
     }
 }
 
-body.category .category-box{
-    .category-notifications-button{
-        top:0;
-    }
-    .category-stats{
-        right: 50%;
-    }
-}
-
-section.category-heading{
-    display:none;
-}
-
-
-.category-boxes .tag-list .tag-box{
-    pointer-events: fill;
-    display: inline-flex;
-    align-items: center;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin-bottom: 0.4em;
-    a{
-        color:$primary-high;
-        font-weight: bold;
-    }
-}
+.category-boxes 
 .discourse-tags .discourse-tag.simple:not(:last-child)::after,{
     content: "";
     margin:0;
@@ -150,11 +127,6 @@ section.category-heading{
     --height:1em;
 }
 
-.tooltip {
-  position: relative;
-  cursor: help;
-  //border-bottom: 1px dotted black;
-}
 
 .category-boxes .subcategories .subcategory .subcategory-image-placeholder .logo{
     height:1em;
@@ -165,18 +137,21 @@ section.category-heading{
 }
 
 
+
+.discourse-tags .discourse-tag.simple:not(:last-child)::after,{
+    content: "";
+    margin:0;
+}
+
 a.discourse-tag {
     height: 1.3em;
     line-height: 1.3em;
-    position: relative;
     padding: 0 4px 0 1em;
+    position: relative;
     bottom:0;
     margin-right: .5em!important;
     background: $primary-low;
     text-decoration: none;
-    //border-color:$primary-medium;
-    //border-width:1px;
-    //border-style:solid;
     -moz-border-radius-bottomright: .25em;
     -webkit-border-bottom-right-radius: .25em;
     border-bottom-right-radius: .25em;
@@ -190,26 +165,8 @@ a.discourse-tag {
     -webkit-border-top-left-radius: 1em;
     border-top-left-radius: 1em;
     -webkit-mask-image: radial-gradient(.2em at .5em 50% , transparent 100%, black 100%);
-    //clip-path: circle(.3em at .5em 50%);
+    
+    //border-color:$primary-medium;
+    //border-width:1px;
+    //border-style:solid;
 }
-//a.discourse-tag:after{
-//    content: "";
-//    position: absolute;
-//    top: calc(50%);
-//    left: .25em;
-//    float: left;
-//    width: .3em;
-//    height: .3em;
-//    -moz-border-radius: .5em;
-//    -webkit-border-radius: .5em;
-//    border-radius: .5em;
-//    border-color:$primary-low;
-//    border-width:1px;
-//    border-style:solid;
-//    background: $secondary;
-//
-//}
-
-
-
-//inner-category-box : style='background-color:#{{c.color}}10'
