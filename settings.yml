@@ -4,7 +4,7 @@ target_box_size:
   description: |
     The target size for the flexible category box.<br/>
     You should enter a <a href="https://www.w3schools.com/CSSref/css_units.asp"> valid css length</a>.<br/>
-    On a full size (1100px) screen, <code>200px</code> will give you mostly 4 boxes per line, and <code>300px</code> will give you mostly 3 boxes per line.
+    On a full size (1100px) screen, "<code>200px</code>" will give you mostly 4 boxes per line, and "<code>300px</code>" will give you mostly 3 boxes per line.
     
 
 show_description: 
