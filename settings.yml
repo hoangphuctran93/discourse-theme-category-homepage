@@ -38,7 +38,7 @@ tag_list:
     <li>The category slug is the category name from its url, for example /c/<b>site-feedback</b></li>
     <li>The tags are separated by a comma, with no comma at the end
 
-show_subcategory: 
+show_subcategories: 
   default: true
   description: 'Show the subcategories'
 
