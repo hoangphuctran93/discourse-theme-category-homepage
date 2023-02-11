@@ -33,15 +33,16 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
                     max-width: 100%;
                     margin-top: -35px;
                 }
-                & .category-notifications-button{
-                    & .select-kit.single-select.dropdown-select-box .select-kit-header{
+                & .select-kit.single-select.dropdown-select-box.category-notifications-button{
+                    top: calc(50% - 17px);
+                    & .select-kit-header{
                         margin-right: 5px;
                         background: var(--d-hover) !important;
                         & svg{
                             color: var(--businesslab-secondary) !important;
                         }
                     }
-                    & .select-kit.single-select.dropdown-select-box .select-kit-header:hover{
+                    & .select-kit-header:hover{
                         background: Var(--d-selected) !important;
                         & svg {
                             color: var(--businesslab-primary) !important;
