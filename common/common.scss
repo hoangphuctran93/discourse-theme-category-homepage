@@ -106,7 +106,7 @@
 }
 
 .category-boxes 
-.discourse-tags .discourse-tag.simple:not(:last-child)::after,{
+.discourse-tags .discourse-tag.simple:not(:last-child)::after{
     content: "";
     margin:0;
 }
@@ -135,7 +135,7 @@
 
 
 
-.discourse-tags .discourse-tag.simple:not(:last-child)::after,{
+.discourse-tags .discourse-tag.simple:not(:last-child)::after{
     content: "";
     margin:0;
 }
@@ -147,7 +147,7 @@ a.discourse-tag {
     position: relative;
     bottom:0;
     margin-right: .5em!important;
-    background: var(--primary-low);
+    background: $primary-low;
     text-decoration: none;
     -moz-border-radius-bottomright: .25em;
     -webkit-border-bottom-right-radius: .25em;
@@ -167,3 +167,4 @@ a.discourse-tag {
     //border-width:1px;
     //border-style:solid;
 }
+
