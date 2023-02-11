@@ -27,7 +27,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
             padding: 1em;
             padding-bottom: 0;
             & .category-logo{
-                &img{
+                & img{
                     height: auto;
                     max-height: 150px;
                     max-width: 100%;
