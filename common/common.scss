@@ -34,6 +34,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
                     margin-top: -35px;
                 }
                 & .category-notifications-button{
+                    top: calc(50% - 17px);
                     & .select-kit.single-select.dropdown-select-box .select-kit-header{
                         margin-right: 5px;
                         background: var(--d-hover) !important;
