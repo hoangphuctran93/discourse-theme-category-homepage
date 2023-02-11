@@ -33,18 +33,19 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
                     max-width: 100%;
                     margin-top: -35px;
                 }
-                & .select-kit.single-select.dropdown-select-box .select-kit-header{
-                    margin-right: 5px;
-                    top: calc(50% - 15px);
-                    background: var(--d-hover) !important;
-                    & svg{
-                        color: var(--businesslab-secondary) !important;
+                & .category-notifications-button{
+                    & .select-kit.single-select.dropdown-select-box .select-kit-header{
+                        margin-right: 5px;
+                        background: var(--d-hover) !important;
+                        & svg{
+                            color: var(--businesslab-secondary) !important;
+                        }
                     }
-                }
-                & .select-kit.single-select.dropdown-select-box .select-kit-header:hover{
-                    background: Var(--d-selected) !important;
-                    & svg {
-                        color: var(--businesslab-primary) !important;
+                    & .select-kit.single-select.dropdown-select-box .select-kit-header:hover{
+                        background: Var(--d-selected) !important;
+                        & svg {
+                            color: var(--businesslab-primary) !important;
+                        }
                     }
                 }
             }
