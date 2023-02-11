@@ -35,8 +35,15 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
                 }
                 & .select-kit.single-select.dropdown-select-box .select-kit-header{
                     margin-right: 5px;
+                    background: var(--d-hover);
                     & svg{
-                        color: var(--businesslab-secondary);
+                        color: var(--businesslab-secondary)
+                    }
+                }
+                & .select-kit.single-select.dropdown-select-box .select-kit-header:hover{
+                    background: Var(--d-selected);
+                    & svg {
+                        color: var(--businesslab-primary) !important;
                     }
                 }
             }
