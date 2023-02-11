@@ -8,8 +8,13 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
     margin-top: 1em;
     margin-bottom: 1em;
     width: 100%;
-    .category-box{
-        border-width: 6px;
+    & .discourse-tag.simple:not(:last-child)::after{
+        content: "";
+    }
+    & .category-box{
+        border-width: 2px;
+        border-radius: 10px;
+        border-color: var(--primary-low);
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: $target_box_size;
@@ -114,18 +119,6 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
         margin-left: .25em;
     }
 }
-
-.category-boxes {
-    & .category-box{
-        border-radius: 10;
-    }
-    & .discourse-tag.simple:not(:last-child)::after{
-        content: "";
-    }
-}
-
-
-
 
 .category-boxes .subcategories .subcategory .subcategory-image-placeholder{
     margin-right: 0em;
