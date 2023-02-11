@@ -12,7 +12,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
         content: "";
     }
     & .category-box{
-        border-width: 6px;
+        border-width: 4px;
         border-radius: 10px;
         border-color: var(--primary-low) !important;
         flex-grow: 1;
@@ -24,7 +24,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
         
         .category-box-inner{
             border-width: 0px;
-            padding: 1em;
+            padding: .75em;
             padding-bottom: 0;
             & .category-logo{
                 & img{
@@ -172,7 +172,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
     }
 }
 
-ul.tag-links a.discourse-tag {
+.category-boxes ul.tag-links a.discourse-tag {
     height: 1.3em;
     line-height: 1.3em;
     padding: 0 4px 0 1em;
