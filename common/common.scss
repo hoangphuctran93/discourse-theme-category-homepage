@@ -3,6 +3,11 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
 // Last Edited: 2022-05-07 17:10:26 UTC
 .category-boxes , .category-boxes-with-topics {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
     .category-box{
         border-width: 6px;
         flex-grow: 1;
