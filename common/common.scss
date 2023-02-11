@@ -26,6 +26,13 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
             border-width: 0px;
             padding: 1em;
             padding-bottom: 0;
+            & .category-logo{
+                &img{
+                    height: auto;
+                    max-height: 150px;
+                    max-width: 100%;
+                }
+            }
             & .category-details .category-box-heading{
                 & h3{
                     padding-bottom: 8px;
