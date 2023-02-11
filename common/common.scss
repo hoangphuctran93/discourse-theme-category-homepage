@@ -2,6 +2,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
 // Target: common scss
 // Last Edited: 2022-05-07 17:10:26 UTC
 .category-boxes , .category-boxes-with-topics {
+    display: flex;
     .category-box{
         border-width: 6px;
         flex-grow: 1;
