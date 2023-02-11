@@ -27,7 +27,11 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
             padding: 1em;
             padding-bottom: 0;
             & .category-details .category-box-heading{
-                & a h3, & .description{
+                & h3{
+                    padding-bottom: 8px;
+                    margin-top: 0.25em;
+                }
+                & .description{
                     text-align: left !important;
                 }
             }
@@ -73,9 +77,6 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
         pointer-events: fill;
         position:relative;
         z-index:1;
-    }
-    h3{
-        margin-top:2ex;
     }
     
     .direct-access-links{
