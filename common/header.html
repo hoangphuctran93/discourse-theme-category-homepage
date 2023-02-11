@@ -75,7 +75,7 @@
 {{#each categories as |c|}}
   <div style={{border-color c.color}} data-category-id={{c.id}} data-notification-level={{c.notificationLevelString}} data-url={{c.url}} class="category category-box category-box-{{c.slug}} {{if c.isMuted "muted"}} {{if noCategoryStyle "no-category-boxes-style"}}">
     <div class="category-box-inner">
-      <div class="category-logo" href={{c.url}} style={{background-color c.color}}>
+      <div class="category-logo" href={{c.url}} style={{border-color c.color, diplay: block}}>
         {{#if (theme-setting 'show_bell')}}
           {{category-notifications-button
             value=c.notification_level
