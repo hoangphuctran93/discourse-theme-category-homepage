@@ -31,12 +31,14 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
                     height: auto;
                     max-height: 150px;
                     max-width: 100%;
+                    margin-top: -35px;
                 }
             }
             & .category-details .category-box-heading{
                 & h3{
                     padding-bottom: 8px;
                     margin-top: 0.25em;
+                    text-align: left !important;
                 }
                 & .description{
                     text-align: left !important;
