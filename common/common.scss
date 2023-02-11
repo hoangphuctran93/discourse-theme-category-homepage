@@ -26,7 +26,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
         font-size: small;
     }
     .category-logo{
-        display: block;
+        display: block !important;
         .category-notifications-button{
             float:right;
             top:2.5ex;
