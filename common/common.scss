@@ -27,7 +27,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
             padding: .5em;
             padding-bottom: 0;
             & .category-details .category-box-heading{
-                & a, & .description{
+                & a h3, & .description{
                     text-align: left !important;
                 }
             }
