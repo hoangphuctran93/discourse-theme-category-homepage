@@ -116,6 +116,9 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
 }
 
 .category-boxes {
+    & .category-box{
+        border-radius: 10;
+    }
     & .discourse-tag.simple:not(:last-child)::after{
         content: "";
     }
