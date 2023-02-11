@@ -115,8 +115,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
     }
 }
 
-.category-boxes 
-.discourse-tags .discourse-tag.simple:not(:last-child)::after{
+.category-boxes .discourse-tag.simple:not(:last-child)::after{
     content: "";
     margin:0;
 }
@@ -145,7 +144,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
 
 
 
-.discourse-tags .discourse-tag.simple:not(:last-child)::after{
+.discourse-tag.simple:not(:last-child)::after{
     content: "";
     margin:0;
 }
