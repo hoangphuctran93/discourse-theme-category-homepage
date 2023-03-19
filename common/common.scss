@@ -12,26 +12,29 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
         content: "";
     }
     & .category-box{
-        border-width: 4px;
-        border-radius: 10px;
-        border-color: var(--primary-low) !important;
+        border-width: 0px;
+        //border-radius: 10px;
+        //border-color: var(--primary-low) !important;
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: $target_box_size;
         
         align-content: space-between;
         justify-content: space-between;
+        box-shadow: 0 24px 40px rgba(0,0,0,.07), 0 10.8529px 24.1177px rgba(0,0,0,.0456112), 0 4.50776px 10.0172px rgba(0,0,0,.035), 0 1.63037px 3.62304px rgba(0,0,0,.0243888);
         
         .category-box-inner{
             border-width: 0px;
             padding: .75em;
             padding-bottom: 0;
             & .category-logo{
+                margin: -.75em -.75em 0px -.75em;
                 & img{
                     height: auto;
                     max-height: 150px;
                     max-width: 100%;
                     margin-top: -35px;
+                    border-radius: 10Px 10px 0px 0px;
                 }
                 & .category-notifications-button{
                     & .select-kit-header{
