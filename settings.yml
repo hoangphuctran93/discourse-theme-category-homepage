@@ -8,6 +8,7 @@ target_box_size:
 
 target_box_grow:
   type: integer
+  default: "0"
   minimum: 0
   maximum: 1
   description: |
