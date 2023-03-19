@@ -5,7 +5,13 @@ target_box_size:
     The target size for the flexible category box.<br/>
     You should enter a <a href="https://www.w3schools.com/CSSref/css_units.asp"> valid css length</a>.<br/>
     On a full size (1100px) screen, "<code>200px</code>" will give you mostly 4 boxes per line, and "<code>300px</code>" will give you mostly 3 boxes per line.
-    
+
+target_box_grow:
+  type: integer
+  minimum: 0
+  maximum: 1
+  description: |
+    Choose between 0 and 1 to change the "flex-grow" property's variable.
 
 show_description: 
   default: true
