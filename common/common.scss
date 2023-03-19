@@ -15,8 +15,10 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
         border-width: 0px;
         border-radius: 10px;
         //border-color: var(--primary-low) !important;
+        //flex-grow: 1;
         flex-grow: 0;
         flex-shrink: 1;
+        //flex-basis: $target_box_size;
         flex-basis: calc(50% - 12px);
         
         align-content: space-between;
