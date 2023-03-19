@@ -13,7 +13,7 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
     }
     & .category-box{
         border-width: 0px;
-        //border-radius: 10px;
+        border-radius: 10px;
         //border-color: var(--primary-low) !important;
         flex-grow: 1;
         flex-shrink: 1;
