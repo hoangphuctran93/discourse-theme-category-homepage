@@ -35,6 +35,8 @@ $primary: #1c1c1c !default; $secondary: #f7f7f7 !default; $tertiary: #008b8b !de
                     max-width: 100%;
                     margin-top: -35px;
                     border-radius: 10Px 10px 0px 0px;
+                    object-fit: cover;
+                    object-position: center;
                 }
                 & .category-notifications-button{
                     & .select-kit-header{
