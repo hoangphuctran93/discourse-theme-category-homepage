@@ -8,9 +8,9 @@ target_box_size:
 
 target_box_grow:
   type: integer
-  default: 1
+  default: 0
   minimum: 0
-  maximum: 1
+  maximum: 3
   description: |
     Choose between 0 and 1 to change the "flex-grow" property's variable.
 
